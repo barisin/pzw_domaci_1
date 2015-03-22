@@ -24,5 +24,35 @@ namespace domaci_pzw_1
         {
             InitializeComponent();
         }
+
+        private void _OnWindowLoad(object sender, RoutedEventArgs e)
+        {
+            this.left_button.MouseLeftButtonDown += new MouseButtonEventHandler(left_button_MouseLeftButtonDown);
+            this.right_button.MouseLeftButtonDown += new MouseButtonEventHandler(right_button_MouseLeftButtonDown);
+        }
+
+        void right_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            this.right_cont.Children.Add(new Rectangle()
+            {
+                Height=40,
+                Fill=Brushes.DarkRed,
+                Margin=new Thickness(10)                
+            });
+        }
+
+        void left_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.left_cont.Children.Add(new Rectangle()
+            {
+                Height = 60,
+                Width = 60,
+                Fill = Brushes.Coral,
+                Margin = new Thickness(10)
+            });
+        }
+
+       
     }
 }
