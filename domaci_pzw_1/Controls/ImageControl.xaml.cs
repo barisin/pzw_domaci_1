@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace domaci_pzw_1
+namespace domaci_pzw_1.Controls
 {
     /// <summary>
     /// Interaction logic for ImageControl.xaml
@@ -23,11 +23,6 @@ namespace domaci_pzw_1
         public ImageControl()
         {
             InitializeComponent();
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
