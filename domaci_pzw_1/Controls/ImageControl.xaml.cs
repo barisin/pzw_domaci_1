@@ -24,5 +24,58 @@ namespace domaci_pzw_1.Controls
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.deleteImage.MouseLeftButtonUp += deleteImage_MouseLeftButtonUp;
+            this.editImage.MouseLeftButtonUp += editImage_MouseLeftButtonUp;
+        }
+
+        void editImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void deleteImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            RaiseDeleteEvent();
+        }
+
+        public static readonly RoutedEvent DeleteEvent = EventManager.RegisterRoutedEvent
+        (
+           "Delete", //ime eventa
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(ImageControl) //tip elementa koji posjeduje event
+        );
+
+        public event RoutedEventHandler Delete //za registraciju/deregistraciju 
+        {
+            add { AddHandler(DeleteEvent, value); }
+            remove { RemoveHandler(DeleteEvent, value); }
+        }
+
+        void RaiseDeleteEvent()
+        {
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(ImageControl.DeleteEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register
+        (
+          "Title",
+          typeof(string),
+          typeof(ImageControl),
+          new UIPropertyMetadata("User")
+        );
+
+
+
     }
 }
