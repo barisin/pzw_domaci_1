@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using domaci_pzw_1.Controls;
 
+
 namespace domaci_pzw_1
 {
     /// <summary>
@@ -53,9 +54,10 @@ namespace domaci_pzw_1
 
             if (indexOfElement == -1) { return; }
 
+            string promptValue = prompt.ShowDialog("New name: ", "Edit name");
 
-
-            mediaItem.Title = "";
+            if(promptValue!="")
+                mediaItem.Title = promptValue;
         }
 
         void ImageItemControl_Delete(object sender, RoutedEventArgs e)
@@ -100,6 +102,7 @@ namespace domaci_pzw_1
                 {
                     var mediaItem = (ImageControl)element;
                     mediaItem.Delete += mediaItem_Delete;
+                    mediaItem.Edit += mediaItem_Edit;
                 }
         }
 
