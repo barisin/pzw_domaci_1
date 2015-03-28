@@ -43,6 +43,50 @@ namespace domaci_pzw_1
                     mediaItem.Edit += mediaItem_Edit;
                 }
             }
+
+            for (var i = 0; i < this.right_cont.Children.Count; i++)
+            {
+                var element = this.right_cont.Children[i];
+                if (element is StatusControl)
+                {
+                    var mediaItem = (StatusControl)element;
+                    mediaItem.ImgCtrl.Delete += ImgCtrl_Delete;
+                    mediaItem.ImgCtrl.Edit += ImgCtrl_Edit;
+                }
+            }
+        }
+
+        void ImgCtrl_Edit(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is ImageControl)) { return; }
+            var mediaItem = sender as ImageControl;
+            var imgItem = mediaItem.Parent as Grid;
+            var a = imgItem.Parent as Viewbox;
+            var b = a.Parent as StatusControl;
+
+            var indexOfElement = this.right_cont.Children.IndexOf(b);
+            
+            if (indexOfElement == -1) { return; }
+
+            string promptValue = prompt.ShowDialog("New name: ", "Edit name");
+
+            if (promptValue != "")
+               b.ImgCtrl.Title = promptValue;
+        }
+
+        void ImgCtrl_Delete(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is ImageControl)) { return; }
+            var mediaItem = sender as ImageControl;
+            var imgItem = mediaItem.Parent as Grid;
+            var a = imgItem.Parent as Viewbox;
+            var b = a.Parent as StatusControl;
+          
+            var indexOfElement = this.right_cont.Children.IndexOf(b);
+
+            if (indexOfElement == -1) { return; }
+
+            this.right_cont.Children.RemoveAt(indexOfElement);
         }
 
         void mediaItem_Edit(object sender, RoutedEventArgs e)
@@ -80,12 +124,20 @@ namespace domaci_pzw_1
         void right_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            this.right_cont.Children.Add(new Rectangle()
+            this.right_cont.Children.Add(new StatusControl()
             {
-                Height=40,
-                Fill=Brushes.DarkRed,
-                Margin=new Thickness(10)                
+                Height=80,
+                Margin=new Thickness(10),
+                HorizontalAlignment = 0
             });
+
+            var element = this.right_cont.Children[this.right_cont.Children.Count - 1];
+            if (element is StatusControl)
+            {
+                var mediaItem = (StatusControl)element;
+                mediaItem.ImgCtrl.Delete += ImgCtrl_Delete;
+                mediaItem.ImgCtrl.Edit += ImgCtrl_Edit;
+            }
         }
 
         void left_button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

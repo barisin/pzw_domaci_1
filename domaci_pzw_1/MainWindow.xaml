@@ -37,8 +37,8 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="10">
             <StackPanel x:Name="right_cont"  Orientation="Vertical">
-                <Rectangle Width="auto" Height="40" Fill="DarkRed" Margin="10"></Rectangle>
-                <Rectangle Width="auto" Height="40" Fill="DarkRed" Margin="10"></Rectangle>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left"></controls:StatusControl>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Status="What' up?"></controls:StatusControl>
             </StackPanel>
         </ScrollViewer>
 

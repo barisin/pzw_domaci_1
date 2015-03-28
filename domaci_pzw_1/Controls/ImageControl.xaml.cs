@@ -95,8 +95,5 @@ namespace domaci_pzw_1.Controls
           typeof(ImageControl),
           new UIPropertyMetadata("User")
         );
-
-
-
     }
 }
