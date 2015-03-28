@@ -33,8 +33,9 @@ namespace domaci_pzw_1.Controls
 
         void editImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            RaiseEditEvent();
         }
+
 
         void deleteImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -53,6 +54,26 @@ namespace domaci_pzw_1.Controls
         {
             add { AddHandler(DeleteEvent, value); }
             remove { RemoveHandler(DeleteEvent, value); }
+        }
+
+        void RaiseEditEvent()
+        {
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(ImageControl.EditEvent);
+            RaiseEvent(newEventArgs);
+        }
+
+        public static readonly RoutedEvent EditEvent = EventManager.RegisterRoutedEvent
+        (
+           "Edit", //ime eventa
+            RoutingStrategy.Bubble,
+            typeof(RoutedEventHandler),
+            typeof(ImageControl) //tip elementa koji posjeduje event
+        );
+
+        public event RoutedEventHandler Edit //za registraciju/deregistraciju 
+        {
+            add { AddHandler(EditEvent, value); }
+            remove { RemoveHandler(EditEvent, value); }
         }
 
         void RaiseDeleteEvent()

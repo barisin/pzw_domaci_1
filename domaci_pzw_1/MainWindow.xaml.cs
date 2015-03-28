@@ -39,8 +39,23 @@ namespace domaci_pzw_1
                 {
                     var mediaItem = (ImageControl)element;
                     mediaItem.Delete += mediaItem_Delete;
+                    mediaItem.Edit += mediaItem_Edit;
                 }
             }
+        }
+
+        void mediaItem_Edit(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is ImageControl)) { return; }
+            var mediaItem = sender as ImageControl;
+
+            var indexOfElement = this.left_cont.Children.IndexOf(mediaItem);
+
+            if (indexOfElement == -1) { return; }
+
+
+
+            mediaItem.Title = "";
         }
 
         void ImageItemControl_Delete(object sender, RoutedEventArgs e)
