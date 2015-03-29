@@ -30,15 +30,18 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="0" Grid.Row="2" Margin="1">
             <StackPanel x:Name="left_cont" Orientation="Vertical">
-                <controls:ImageControl Width="80" Height="80" Margin="5"></controls:ImageControl>
-                <controls:ImageControl Width="80" Height="80" Margin="5"></controls:ImageControl>                
+                <controls:ImageControl Width="80" Height="80" Margin="5" Title="Nate"></controls:ImageControl>
+                <controls:ImageControl Width="80" Height="80" Margin="5" Title="Jessica"></controls:ImageControl>
+                <controls:ImageControl Width="80" Height="80" Margin="5" Title="Stipe St3"></controls:ImageControl>
             </StackPanel>
         </ScrollViewer>
 
         <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="10">
             <StackPanel x:Name="right_cont"  Orientation="Vertical">
-                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left"></controls:StatusControl>
-                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Status="What' up?"></controls:StatusControl>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Name2="Megan" Status="Crazy partyyyyyy with my bi*ches"></controls:StatusControl>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Name2="Cat Girl" Status="Got a new kitten XOXO"></controls:StatusControl>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Name2="Jenna" Status="Wonderful lunch with bae #love"></controls:StatusControl>
+                <controls:StatusControl Width="auto" Height="80" Margin="10" HorizontalAlignment="Left" Name2="Gangsta Josh" Status="#whatup #fight #kickhisass #stupidfacebook"></controls:StatusControl>
             </StackPanel>
         </ScrollViewer>
 

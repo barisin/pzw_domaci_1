@@ -6,7 +6,8 @@
              xmlns:controls="clr-namespace:domaci_pzw_1.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="400"
-             x:Name="StatusItemControl">
+             x:Name="StatusItemControl"
+             Loaded="StatusItemControl_Loaded">
     <Viewbox>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -15,9 +16,11 @@
             </Grid.ColumnDefinitions>
 
 
-            <controls:ImageControl Width="85" Height="80" HorizontalAlignment="Left" Margin="5" Grid.Column="0" x:Name="ImgCtrl"></controls:ImageControl>
-            <TextBlock Width="auto" Height="80" Margin="50 30 0 10" FontSize="20" Grid.Column="1" Text="{Binding ElementName=StatusItemControl, Path=Status}"></TextBlock>
-            <Border Height="1" Width="auto" Grid.Column="1" Margin="50 40 20 0" BorderBrush="Black" BorderThickness="1"></Border>
+            <controls:ImageControl Width="85" Height="80" HorizontalAlignment="Left" Margin="5" Grid.Column="0" Title="{Binding ElementName=StatusItemControl, Path=Name2}" x:Name="ImgCtrl"></controls:ImageControl>
+            <TextBlock Width="auto" Height="80" Margin="50 30 0 10" Grid.Column="1" FontSize="20" HorizontalAlignment="Left" Text="{Binding ElementName=StatusItemControl, Path=Status}"></TextBlock>
+            <Image Source="/Resources/Images/edit.png" Grid.Column="1" HorizontalAlignment="Right" Height="40" Margin="450 0 0 20" Cursor="Hand" x:Name="EditStatusButton"></Image>
+            <Border Height="1" Width="auto" Margin="50 40 20 0" Grid.Column="1" BorderBrush="Black" BorderThickness="1"></Border>
+
         </Grid>
     </Viewbox>
 </UserControl>

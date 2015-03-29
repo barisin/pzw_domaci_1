@@ -52,8 +52,24 @@ namespace domaci_pzw_1
                     var mediaItem = (StatusControl)element;
                     mediaItem.ImgCtrl.Delete += ImgCtrl_Delete;
                     mediaItem.ImgCtrl.Edit += ImgCtrl_Edit;
+                    mediaItem.EditStatusHandle += mediaItem_EditStatus;
                 }
             }
+        }
+
+        void mediaItem_EditStatus(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is StatusControl)) { return; }
+            var mediaItem = sender as StatusControl;
+
+            var indexOfElement = this.right_cont.Children.IndexOf(mediaItem);
+
+            if (indexOfElement == -1) { return; }
+
+            string promptValue = prompt.ShowDialog("New name: ", "Edit name");
+
+            if (promptValue != "")
+                mediaItem.Status = promptValue;
         }
 
         void ImgCtrl_Edit(object sender, RoutedEventArgs e)
@@ -137,6 +153,7 @@ namespace domaci_pzw_1
                 var mediaItem = (StatusControl)element;
                 mediaItem.ImgCtrl.Delete += ImgCtrl_Delete;
                 mediaItem.ImgCtrl.Edit += ImgCtrl_Edit;
+                mediaItem.EditStatusHandle += mediaItem_EditStatus;
             }
         }
 
